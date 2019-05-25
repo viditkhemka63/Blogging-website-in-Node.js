@@ -1,0 +1,21 @@
+/**************** copyright part css start ****************/
+.copyright_part{
+    background-color: $footer_bg;
+    padding: 26px 0px;
+    .copyright_part_text{
+        border-top: 1px solid #3b3f40;
+    }
+    p{
+        color: #8a8a8a;
+        font-family: 300;
+    }
+    a{
+        color: $btn_bg;
+    }
+    @media #{$medium_device}{
+  }
+  span.ti-heart {
+    font-size: 12px;
+    margin: 0px 2px;
+  }
+}

@@ -1,0 +1,165 @@
+//--------- start footer Area -------------//
+.footer-area {
+	background-color: $footer_bg;
+	padding: 100px 0px 30px;
+	@media (max-width: 991px) {
+		padding: 70px 0px 30px;
+	}
+	.single-footer-widget {
+		@media (max-width: 991px) {
+			margin-bottom: 30px;
+		}
+
+		p{
+			color: #8f8f8f;
+			font-size: 14px;
+		}
+
+		h4 {
+			color: $white_color;
+			font-style: inherit;
+			margin-bottom: 23px;
+			font-weight: 700;
+			font-size: 24px;
+			@media (max-width: 1024px) {
+				font-size: 18px;
+			}
+			@media (max-width: 991px) {
+				margin-bottom: 15px;
+			}
+		}
+		h5{
+			font-size: 16px;
+			color: $white_color;
+
+		}
+		ul {
+			li {
+				margin-bottom: 14px;
+				a {
+					color: $font_4;
+					@include transform_time(0.5s);
+					&:hover{
+						color: $btn_bg;
+					}
+				}
+			}
+		}
+		.form-wrap {
+			margin-top: 25px;
+		}
+		input {
+			height: 48px;
+			border: none;
+			width: 67% !important;
+			font-weight: 400;
+			background: transparent;
+			padding-left: 20px;
+			border-radius: 0;
+			font-size: 14px;
+			padding: 10px;
+			border: 1px solid #e1e1e1;
+			color: #999999;
+			&:focus {
+				outline: none;
+				box-shadow: none;
+			}
+		}
+		.click-btn {
+			background-color: $btn_bg;
+			color: $white_color;
+			border-radius: 0;
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+			padding: 8px 20px;
+			border: 0;
+			font-size: 12px;
+			font-weight: 400;
+			font-family: $font_stack_1;
+			position: relative;
+			left: 0;
+			&:focus {
+				outline: none;
+				box-shadow: none;
+      }
+      
+      @media(max-width: 375px){
+        margin-top: 10px;
+      }
+
+			@media(min-width: 400px){
+				left: -50px;
+			}
+		}
+	}
+	.contact_info{
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 20px;
+		&:last-child{
+			margin-bottom: 0px;
+		}
+		h5{
+			margin-bottom: 1px;
+		}
+		span{
+			font-size: 18px;
+			color: $btn_bg;
+			position: absolute;
+			left: 0;
+			top: 5px;
+		}
+	}
+	.form-control{
+		border-radius: 0px !important;
+		font-size: 13px;
+		color: #999999;
+		font-weight: 400;
+		height: 48px;
+		border: 1px solid #3b3f40 !important;
+		margin-top: 23px;
+		&:focus{
+			outline: none !important;
+			border-color: #e9ecee;
+		}
+	}
+	.btn{
+		margin-top: 23px;
+		background-color: $btn_bg;
+		color: $white_color;
+		width: 49px;
+		border-radius: 0px;
+		height: 48px;
+	}
+	span.ti-heart {
+		font-size: 12px;
+		margin: 0px 2px;
+	  }
+	.copyright_part_text{
+		border-top: 1px solid #41404f;
+		padding-top: 30px;
+		margin-top: 83px;
+		p{
+			color: #8f8f8f;
+		}
+		@media #{$small_mobile}{
+			margin-top: 20px;
+			p{
+				font-size: 14px;
+			}
+		}
+		@media #{$large_mobile}{
+			margin-top: 20px;
+		}
+		@media #{$tab_device}{
+		
+		}
+		@media #{$medium_device}{
+		
+		}
+		a{
+			color: $btn_bg;
+		}
+	}
+}
+//--------- end footer Area -------------//

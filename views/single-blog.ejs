@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>DarEn BLOG || BLOG</title>
+   <link rel="icon" href="img/favicon.png">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- animate CSS -->
+   <link rel="stylesheet" href="css/animate.css">
+   <!-- owl carousel CSS -->
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <!-- themify CSS -->
+   <link rel="stylesheet" href="css/themify-icons.css">
+   <!-- flaticon CSS -->
+   <link rel="stylesheet" href="css/liner_icon.css">
+   <link rel="stylesheet" href="css/search.css">
+   <!-- swiper CSS -->
+   <link rel="stylesheet" href="css/slick.css">
+   <!-- style CSS -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <!--::header part start::-->
+   <% include ./partials/header %>
+   <!-- Header part end-->
+
+   <!-- breadcrumb start-->
+   <section class="breadcrumb breadcrumb_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner text-center">
+                  <div class="breadcrumb_iner_item">
+                     <h2>Blog Single</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb start-->
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area all_post section_padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src=<%= article.imgPath %> alt="">
+                  </div>
+                  <div class="blog_details">
+                     <h2><%= article.title %></h2>
+
+                     <p class="excert">
+                        <%= article.description %>
+                     </p>
+
+                  </div>
+               </div>
+              
+               <div class="comments-area">
+                  <h4>Comments</h4>
+                  
+                  
+                  <% for(var i=0; i < comments.length; i++) { %>
+                     
+                     <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                           <div class="user justify-content-between d-flex">
+                              
+                              <div class="desc">
+                                 <p class="comment">
+                                    <%= comments[i].comment %>
+                                 </p>
+                                 <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                       <p>
+                                          <%= comments[i].authorId %>
+                                       </p>
+                                       <p class="date"><%= comments[i].date %> </p>
+                                    </div>
+                                 </div>
+                              </div>
+   
+                           </div>
+                        </div>
+                     </div>
+
+                  <% } %>   
+               </div>
+
+               <div class="comment-form">
+                  <h4>Leave a Reply</h4>
+                  <form class="form-contact comment_form" action="/addComment/<%= article._id %>" method="POST" id="commentForm">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                 placeholder="Write Comment"></textarea>
+                           </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                           </div>
+                        </div>   
+                     </div>
+                     
+                     <div class="load_btn">
+                        <button type="submit" class="btn_1">Submit </button>
+                     </div>
+
+                  </form>
+               </div>
+
+            </div>
+            
+         </div>
+      </div>
+   </section>
+   <!--================Blog Area end =================-->
+
+   <!-- footer part start-->
+   <% include ./partials/footer %>
+   <!-- footer part end-->
+
+   <!-- jquery plugins here-->
+   <!-- jquery -->
+   <script src="js/jquery-1.12.1.min.js"></script>
+   <!-- popper js -->
+   <script src="js/popper.min.js"></script>
+   <!-- bootstrap js -->
+   <script src="js/bootstrap.min.js"></script>
+   <!-- custom js -->
+   <script src="js/custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+/**************** banner part css start ****************/
+.banner_post{
+    .col-lg-12, .col-xl-12, .col-sm-12{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .banner_post_bg_1{
+        @include background("../img/banner_blog/banner_blog_1.png");
+    }
+    .banner_post_bg_2{
+        @include background("../img/banner_blog/banner_blog_2.png");
+    }
+    .h2{
+        color: #2a2a2a;
+        line-height: 1.333;
+        font-family: $font_stack_2;
+        font-weight: 600;
+        @include transform_time(.5s);
+        &:hover{
+            color: $btn_bg !important;
+        }
+    }
+    a{
+        h2{
+            &:hover{
+                @include transform_time(.5s);
+                color: $btn_bg !important;
+            }
+        }
+    }
+    h5{
+        font-size: 11px;
+        color: $btn_bg;
+        text-transform: uppercase;
+        font-family: $font_stack_1;
+        font-weight: 700;
+        margin-bottom: 12px;
+        
+    }
+    p{
+        font-size: 13px;
+        color: $font_4;
+        margin-top: 15px;
+        span{
+            font-size: 13px;
+            font-weight: 800;
+            color: $span_color;
+        }
+    }
+    .banner_post_1{
+        position: relative;
+        height: 810px;
+        width: 36%;
+        float: left;
+        @media #{$small_mobile}{
+            width: 100%;
+            height: 400px;
+        }
+        @media #{$large_mobile}{
+            width: 50%;
+            height: 400px;
+        }
+        @media #{$tab_device}{
+            width: 50%;
+            height: 400px;
+        }
+        @media #{$medium_device}{
+            height: 600px;
+        }
+        .banner_post_iner{
+            padding: 45px;
+            position: absolute;
+            bottom: 160px;
+            left: 0;
+            right: 0;
+            background-color: $white_color;
+            max-width: 490px;
+            margin: 0 auto;
+            @media #{$small_mobile}{
+                bottom: 0px;
+                padding: 20px;
+            }
+            @media #{$large_mobile}{
+                bottom: auto;
+                padding: 20px;
+                top: 0px;
+            }
+            @media #{$tab_device}{
+                max-width: 350px;
+                bottom: 120px;
+                padding: 20px;
+                h2{
+                    font-size: 22px;
+                }
+            }
+            @media #{$medium_device}{
+                h2{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+    .banner_post_2{
+        height: 810px;
+        margin-left: .5%;
+        width: 63.5%;
+        float: left;
+        position: relative;
+        @media #{$small_mobile}{
+            width: 100%;
+            height: 400px;
+            margin-left: 0%;
+            margin-top: 20px;
+        }
+        @media #{$large_mobile}{
+            width: 50%;
+            height: 400px;
+            margin-left: 0%;
+        }
+        @media #{$tab_device}{
+            width: 50%;
+            height: 400px;
+            margin-left: 0%;
+        }
+        @media #{$medium_device}{
+            height: 600px;
+        }
+        .banner_post_iner{
+            position: absolute;
+            right: 0;
+            left: 23%;
+            bottom: -96px;
+            padding: 45px 144px 50px 50px;
+            background-color: $white_color;
+            @media #{$small_mobile}{
+                width: 100%;
+                left: 0%;
+                padding: 20px;
+                bottom: 0px;
+            }
+            @media #{$large_mobile}{
+                width: 100%;
+                left: 0%;
+                padding: 20px;
+                bottom: 0px;
+            }
+            @media #{$tab_device}{
+                width: 100%;
+                left: 0%;
+                padding: 20px;
+                bottom: 0px;
+                h2{
+                    font-size: 22px;
+                }
+            }
+            @media #{$medium_device}{
+                h2{
+                    font-size: 25px;
+                }
+                left: 10%;
+            }
+        }
+    }
+}
+  
+/**************** hero part css end ****************/

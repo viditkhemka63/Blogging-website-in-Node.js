@@ -1,0 +1,40 @@
+.breadcrumb {
+	background-color: #fff1f1;
+	text-align: center;
+	padding: 0rem;
+
+	.breadcrumb_iner {
+		height: 150px;
+		width: 100%;
+		display: table;
+
+		.breadcrumb_iner_item {
+			display: table-cell;
+			vertical-align: middle;
+
+			h2 {
+				color: $black_color;
+				font-size: 27px;
+				font-weight: 600;
+				margin-bottom: 0px;
+				text-transform: capitalize;
+			}
+
+			p {
+				font-size: 15px;
+				color: $white_color;
+			}
+
+			span {
+				margin: 0px 5px;
+				font-size: 12px;
+			}
+
+		}
+	}
+
+}
+
+.breadcrumb {
+	margin-bottom: 0px !important;
+}
