@@ -22,6 +22,9 @@
    <link rel="stylesheet" href="css/slick.css">
    <!-- style CSS -->
    <link rel="stylesheet" href="css/style.css">
+
+   <link rel="stylesheet" href="css/my.css">
+
 </head>
 
 <body>
@@ -53,15 +56,29 @@
                   <div class="feature-img">
                      <img class="img-fluid" src=<%= article.imgPath %> alt="">
                   </div>
-                  <div class="blog_details">
-                     <h2><%= article.title %></h2>
-
-                     <p class="excert">
-                        <%= article.description %>
-                     </p>
-
+                  <div class="textRead">
+                        <div class="blog_details">
+                              <h2><%= article.title %></h2>
+         
+                              <p class="excert">
+                                 <%= article.description %>
+                              </p>
+         
+                           </div>
+         
+                           <% if (article.post.length > 0) { %>
+                              <% for(var i=0; i < article.post.length; i++) { %>
+                                
+                                 <p class="excert">
+                                       <%= article.post[i] %>
+                                 </p>
+                                 <br>
+         
+                              <% } %>
+                           <% } %>
                   </div>
                </div>
+
               
                <div class="comments-area">
                   <h4>Comments</h4>

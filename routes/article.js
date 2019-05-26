@@ -25,20 +25,22 @@ router.get('/like', (req, res) => {
 
 router.post('/addArticle', (req, res) => {
 
+    console.log(req.body)
     var article = new Article({
         title: req.body.title,
-        description: req.body.description,
+        description: req.body.text1,
         author: req.body.author,
         category: req.body.category,
         date: Date.now(),
-        imgPath: req.body.imageUrl
+        imgPath: req.body.imageUrl,
+        post: req.body.post
     });
 
     article.save((err, article) => {
         if(err) throw err;
 
         console.log(article);
-        res.redirect('/archive');
+        res.redirect('/');
     });
 });
 
