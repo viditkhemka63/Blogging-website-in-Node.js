@@ -63,7 +63,8 @@
                               <p class="excert">
                                  <%= article.description %>
                               </p>
-         
+
+                              
                            </div>
          
                            <% if (article.post.length > 0) { %>
@@ -76,10 +77,23 @@
          
                               <% } %>
                            <% } %>
+
+                           <% if (article.likes ) { %>
+                              <p class="excert"> 
+                                 <%= article.likes %>
+                                 <strong> Likes</strong>
+                              </p>
+                           <% } %>
                   </div>
                </div>
 
-              
+               <div class="post_icon">
+                  <p id="id"><%= article._id %></p>
+                  <a href="/make/<%= article._id %>" class="ti-heart btn btn-danger">Like</a>
+                  <button id="btn" onclick="like()" class="ti-heart btn">like</button>
+              </div>
+
+               <% if (comments.length > 0) { %>
                <div class="comments-area">
                   <h4>Comments</h4>
                   
@@ -110,6 +124,8 @@
 
                   <% } %>   
                </div>
+               <% } %>
+               
 
                <div class="comment-form">
                   <h4>Leave a Reply</h4>
@@ -142,7 +158,19 @@
       </div>
    </section>
    <!--================Blog Area end =================-->
+   <script>
+      function like() {
+         var id = document.getElementById('id');
 
+         console.log(id.innerHTML);
+         var api = `/make/${id.innerHTML}`;
+         fetch(api);
+         console.log('after api call')
+         var btn = document.getElementById('btn');
+         btn.classList.add('btn-danger')
+         btn.disabled = true;
+      }
+   </script>
    <!-- footer part start-->
    <% include ./partials/footer %>
    <!-- footer part end-->

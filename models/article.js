@@ -28,7 +28,11 @@ var schema = new mongoose.Schema({
     },
     post: [{
         type: String
-    }]
+    }],
+    likes: {
+        type: Number,
+        default: 0
+    }
     
 });
 

@@ -8,6 +8,19 @@ router.get('/create', isLoggedIn, (req, res) => {
     res.render('createArticle')
 })
 
+router.get('/make/:id', (req, res) => {
+    console.log('router working');
+    
+    console.log(req.params.id);
+
+    Article.findByIdAndUpdate(req.params.id, {$inc : {likes : 1}}, (err, data) => {
+        if (err) throw err;
+
+        console.log(data);
+        // res.redirect('/' + req.params.id)
+    })
+})
+
 router.get('/:id',(req, res) => {
     Article.findById(req.params.id, (err, article) => {
         if(err) throw err;
@@ -17,12 +30,6 @@ router.get('/:id',(req, res) => {
         });
     })
 })
-var Like = require('../models/like');
-
-router.get('/like', (req, res) => {
-    console.log('enter');
-    res.json({d: 'test '})
-})  
 
 router.post('/addArticle',isLoggedIn, (req, res) => {
 
