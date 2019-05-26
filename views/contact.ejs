@@ -158,7 +158,21 @@
     </div>
   </section>
   <!-- ================ contact section end ================= -->
-
+ <div>
+   <script>
+     function go() {
+       console.log('button clicked');
+       fetch('http://localhost:3000/like')
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+     }
+   </script>
+   <button class="btn" onclick="go()" > gen </button>
+ </div>
   <!-- footer part start-->
   <% include ./partials/footer %>
   <!-- footer part end-->

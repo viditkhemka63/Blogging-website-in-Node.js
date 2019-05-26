@@ -6,6 +6,8 @@ var logger = require('morgan');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 const upload = require('express-fileupload');   
+var session = require('express-session');
+var passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -33,6 +35,16 @@ mongoose.connect(DBUrl, { useNewUrlParser: true  }, (err) => {
 
   console.log('database connected');
 });
+
+require('./config/passport');
+app.use(session({
+  secret: 'Token',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);

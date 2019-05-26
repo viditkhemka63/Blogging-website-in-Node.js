@@ -8,8 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/archive', (req, res) =>{
-
-  console.log('requres passed')
+  
   Article.find({}, (err, data) => {
     if(err) throw err;
 

@@ -3,6 +3,9 @@ var router = express.Router();
 var Comment = require('../models/comment');
 var Article = require('../models/article');
 
+var passport = require('passport');
+var User = require('../models/user');
+
 /* GET users listing. */
 router.post('/addComment/:id', (req, res) => {
   console.log('comment router start');
@@ -45,12 +48,53 @@ router.post('/search', (req, res) => {
   })
 })
 
-router.get('/got', (req, res) => {
-  Article.listIndexes((err, data) => {
-    if(err) throw err;
-
-    console.log(data);
-  })
+router.get('/login', (req, res) => {
+  res.render('login.ejs');
 })
+
+router.post('/login', passport.authenticate('local-login',{
+  successRedirect : '/',  
+  failureRedirect : '/login'
+}));
+
+
+
+router.get('/signup', (req, res) => {
+  res.render('signup.ejs');
+})
+
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect : '/', // redirect to the secure profile section
+  failureRedirect : '/signup',
+}))
+
+
+router.get('/profile', isLoggedIn, function(req, res) {
+
+  //console.log(req.user);
+  res.render('profile.ejs', {
+      user : req.user,
+      token: {
+        tokenId:''
+      }
+  });
+});
+
+
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, carry on 
+  if (req.isAuthenticated())
+      return next();
+
+  // if they aren't redirect them to the home page
+  res.redirect('/');
+}
 
 module.exports = router;

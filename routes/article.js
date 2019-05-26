@@ -16,10 +16,12 @@ router.get('/:id',(req, res) => {
         });
     })
 })
+var Like = require('../models/like');
 
-router.get('/single/foo', (req, res) => {
-    res.render('single-blog');
-})
+router.get('/like', (req, res) => {
+    console.log('enter');
+    res.json({d: 'test '})
+})  
 
 router.post('/addArticle', (req, res) => {
 
