@@ -48,50 +48,50 @@ router.post('/search', (req, res) => {
   })
 })
 
-// router.get('/login', (req, res) => {
-//   res.render('login.ejs');
-// })
+router.get('/login', (req, res) => {
+  res.render('login.ejs');
+})
 
-// router.post('/login', passport.authenticate('local-login',{
-//   successRedirect : '/',  
-//   failureRedirect : '/login'
-// }));
-
-
-
-// router.get('/signup', (req, res) => {
-//   res.render('signup.ejs');
-// })
-
-// router.post('/signup', passport.authenticate('local-signup', {
-//   successRedirect : '/', // redirect to the secure profile section
-//   failureRedirect : '/signup',
-// }))
+router.post('/login', passport.authenticate('local-login',{
+  successRedirect : '/',  
+  failureRedirect : '/login'
+}));
 
 
-// router.get('/profile', isLoggedIn, function(req, res) {
 
-//   //console.log(req.user);
-//   res.render('profile.ejs', {
-//       user : req.user
-//   });
-// });
+router.get('/signup', (req, res) => {
+  res.render('signup.ejs');
+})
 
-
-// router.get('/logout', function(req, res) {
-//   req.logout();
-//   res.redirect('/');
-// });
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect : '/', // redirect to the secure profile section
+  failureRedirect : '/signup',
+}))
 
 
-// function isLoggedIn(req, res, next) {
+router.get('/profile', isLoggedIn, function(req, res) {
 
-//   // if user is authenticated in the session, carry on 
-//   if (req.isAuthenticated())
-//       return next();
+  //console.log(req.user);
+  res.render('profile.ejs', {
+      user : req.user
+  });
+});
 
-//   // if they aren't redirect them to the home page
-//   res.redirect('/');
-// }
+
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, carry on 
+  if (req.isAuthenticated())
+      return next();
+
+  // if they aren't redirect them to the home page
+  res.redirect('/');
+}
 
 module.exports = router;

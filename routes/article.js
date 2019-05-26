@@ -4,7 +4,7 @@ var Article = require('../models/article');
 var Comment = require('../models/comment');
 var passport = require('passport');
 
-router.get('/create', (req, res) => {
+router.get('/create', isLoggedIn, (req, res) => {
     res.render('createArticle')
 })
 
@@ -24,13 +24,13 @@ router.get('/like', (req, res) => {
     res.json({d: 'test '})
 })  
 
-router.post('/addArticle', (req, res) => {
+router.post('/addArticle',isLoggedIn, (req, res) => {
 
     console.log(req.body)
     var article = new Article({
         title: req.body.title,
         description: req.body.text1,
-        author: req.body.author,
+        author: req.user.email,
         category: req.body.category,
         date: Date.now(),
         imgPath: req.body.imageUrl,
@@ -68,15 +68,15 @@ router.post("/update/:title", (req, res) => {
     })
 })
 
-// function isLoggedIn(req, res, next) {
+function isLoggedIn(req, res, next) {
 
-//     // if user is authenticated in the session, carry on 
-//     if (req.isAuthenticated())
-//         return next();
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
   
-//     // if they aren't redirect them to the home page
-//     res.redirect('/');
-//   }
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+  }
   
 
 module.exports = router;
