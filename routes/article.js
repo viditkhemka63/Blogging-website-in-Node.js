@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Article = require('../models/article');
 var Comment = require('../models/comment');
+var passport = require('passport');
 
 router.get('/create', (req, res) => {
     res.render('createArticle')
@@ -66,5 +67,16 @@ router.post("/update/:title", (req, res) => {
 
     })
 })
+
+// function isLoggedIn(req, res, next) {
+
+//     // if user is authenticated in the session, carry on 
+//     if (req.isAuthenticated())
+//         return next();
+  
+//     // if they aren't redirect them to the home page
+//     res.redirect('/');
+//   }
+  
 
 module.exports = router;

@@ -16,13 +16,7 @@ var articleRouter = require('./routes/article');
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash());
-app.use(upload());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,15 +30,15 @@ mongoose.connect(DBUrl, { useNewUrlParser: true  }, (err) => {
   console.log('database connected');
 });
 
-require('./config/passport');
-app.use(session({
-  secret: 'Token',
-  resave: false,
-  saveUninitialized: false
-}));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+app.use(upload());
+
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
