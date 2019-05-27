@@ -1,3 +1,22 @@
+<% 
+function is() {
+    console.log('button clicked')
+    fetch("/loggedIn")
+    .then(data => {
+        console.log(data);
+        return data.json();
+    })
+    .then(json => {
+        console.log(json);
+        if(json.user) {
+            return true;
+        }else {
+            return false;
+        }
+    });
+}
+%>
+
 <header class="main_menu">
     <div class="container">
         <div class="row align-items-center">
@@ -38,11 +57,9 @@
                                     </form>
                                 </div>
                             </li>
-                                <li><a href="/login" class="d-none d-lg-block"><i class="btn">Login</i></a></li>
+                                <li ><a href="/login" id="login" class="d-none d-lg-block"><i class="btn">Login</i></a></li>
                             
-                                <li><a href="/logout" class="d-none d-lg-block"><i class="btn">Logout</i></a></li>
-                              
-                            <li><a href="#" class="d-none d-lg-block"><i class="ti-google"></i></a></li>
+                                <li ><a href="/logout" id="logout" class="d-none d-lg-block"><i class="btn">Logout</i></a></li>                              
                         </ul>
                     </div>
                 </nav>
@@ -50,3 +67,39 @@
         </div>
     </div>
 </header>
+
+<script>
+    var flag = false;
+    document.addEventListener('DOMContentLoaded', function() {
+        set();
+    }, false);
+    function auth() {
+        var login = document.getElementById('login')
+        var logout = document.getElementById('logout')
+        if(flag){
+            login.style.visibility = 'hidden';
+            logout.style.visibility = 'visible';
+        } else {
+            logout.style.visibility = 'hidden';
+            login.style.visibility = 'visible';
+        }
+
+    }
+
+   
+    function set() {
+        console.log('button clicked')
+        fetch("/loggedIn")
+        .then(data => {
+            return data.json();
+        })
+        .then(json => {
+            if(json.user) {
+                flag = true
+            }else {
+                flag = false;
+            }
+            auth();
+        });
+    }
+</script>
