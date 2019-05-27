@@ -4,18 +4,21 @@ var Article = require('../models/article');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
-});
-
-router.get('/archive', (req, res) =>{
-  
-  Article.find({}, (err, data) => {
+  Article.find({}).sort({date: -1}).exec((err, data) => {
     if(err) throw err;
 
     console.log(data);
+    res.render('index', {articles: data});
+  });
+});
 
+router.get('/archive', (req, res) =>{
+  Article.find({}).sort({date: -1}).exec((err, data) => {
+    if(err) throw err;
+
+    console.log(data);
     res.render('archive', {articles: data});
-  })
+  });
 })
 
 router.get('/contact', (req, res) => {

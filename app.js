@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var multer = require('multer');
-var fs = require('fs');
+var bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -36,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
-
+app.use(bodyParser.json());
 // initialized Passport
 require('./config/passport');
 app.use(session({
