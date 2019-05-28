@@ -3,6 +3,7 @@ var router = express.Router();
 var Article = require('../models/article');
 var Comment = require('../models/comment');
 var passport = require('passport');
+Like = require('../models/like');
 
 router.get('/create', isLoggedIn, (req, res) => {
     res.render('createArticle')
@@ -13,12 +14,41 @@ router.get('/make/:id', (req, res) => {
     
     console.log(req.params.id);
 
-    Article.findByIdAndUpdate(req.params.id, {$inc : {likes : 1}}, (err, data) => {
-        if (err) throw err;
+    Like.find({articleId: req.params.id, userId: req.user.email}, (err, doc) => {
+        if(err) throw err;
+        console.log('before if');
+        console.log(doc);
 
-        console.log(data);
-        // res.redirect('/' + req.params.id)
-    })
+        if(doc === []){
+            console.log('user already liked it');
+            
+            res.json({status: true});
+        } else {
+            console.log('user dont like it');
+            // store user in database
+            var like = new Like({
+                articleId: req.param.id,
+                userId: req.user.email
+            });
+
+            like.save((err, data) => {
+                if(err) throw err;
+
+                console.log(data);
+
+                Article.findByIdAndUpdate(req.params.id, {$inc : {likes : 1}}, (err, data) => {
+                    if (err) throw err;
+            
+                    console.log(data.userID);
+                    res.json({status: false});
+                    // res.redirect('/' + req.params.id)
+                })
+            } )
+            
+        }
+    });
+
+    
 })
 
 router.get('/:id',(req, res) => {
